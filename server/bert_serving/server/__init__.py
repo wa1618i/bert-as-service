@@ -225,7 +225,7 @@ class BertServer(threading.Thread):
         if not self.args.cpu:
             try:
                 import GPUtil
-                num_all_gpu = GPUtil.getGPUs()[0]
+                num_all_gpu = len(GPUtil.getGPUs())
                 if num_all_gpu >= self.num_worker:
                     run_on_gpu = True
                 elif 0 < num_all_gpu < self.num_worker:
